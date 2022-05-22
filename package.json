@@ -1,0 +1,34 @@
+{
+  "name": "restful-api-astronomy-pictures",
+  "version": "1.0.0",
+  "description": "RESTful API for the input of astronomy pictures",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jorgemayor/RESTful-API-Astronomy-Pictures.git"
+  },
+  "keywords": [
+    "api",
+    "astronomy"
+  ],
+  "author": "Jorge Mayor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jorgemayor/RESTful-API-Astronomy-Pictures/issues"
+  },
+  "homepage": "https://github.com/Jorgemayor/RESTful-API-Astronomy-Pictures#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
