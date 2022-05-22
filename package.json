@@ -2,9 +2,10 @@
   "name": "restful-api-astronomy-pictures",
   "version": "1.0.0",
   "description": "RESTful API for the input of astronomy pictures",
-  "main": "index.js",
+  "main": "./src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,8 @@
     "express": "^4.18.1"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0"
+    "cz-conventional-changelog": "^3.3.0",
+    "nodemon": "^2.0.16"
   },
   "config": {
     "commitizen": {
