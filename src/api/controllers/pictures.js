@@ -1,16 +1,27 @@
-const mongoose = require("mongoose")
-const Picture = require("../models/Picture")
+const pictureServices = require("../services/pictures")
 
-const createPicture = (req, res, next) => {
-	const picture = new Picture({
-		explanation: req.body.explanation,
-		hdurl: req.body.hdurl,
-		title: req.body.title,
-		url: req.body.url,
-	})
-	res.status(201).json({
-		message: "Handling POST request to /pictures",
-	})
+const createPicture = async (req, res, next) => {
+	const { body } = req
+	
+	if(!body.explanation || !body.hdurl || !body.title || !body.url) {
+		res.status(400).json({
+			status: "400 Bad request",
+			message: "At least one of the parameters was not provided or is empty."
+		})
+		return
+	}
+	
+	try {
+		const response = await pictureServices.createPicture(body)
+		res.status(201).json({
+			status: "201 Created"
+		})
+	} catch (error) {
+		res.status(error?.status || 500).json({
+			status: error?.status || 500,
+			error: error?.message || "Internal server error"
+		})
+	}
 }
 
 const getPicture = (req, res, next) => {

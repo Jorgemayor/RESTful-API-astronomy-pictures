@@ -1,7 +1,6 @@
 const express = require("express")
 const router = express.Router()
 
-const Picture = require("../models/Picture")
 const pictureController = require("../controllers/pictures")
 
 router.post("/", pictureController.createPicture)
