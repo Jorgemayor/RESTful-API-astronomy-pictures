@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const pagination = require("mongoose-paginate-v2")
 
 const pictureSchema = new mongoose.Schema({
 	explanation: {
@@ -18,5 +19,7 @@ const pictureSchema = new mongoose.Schema({
 		required: true,
 	},
 })
+
+pictureSchema.plugin(pagination)
 
 module.exports = mongoose.model("Picture", pictureSchema)
