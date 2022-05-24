@@ -4,12 +4,6 @@ const mongoose = require("mongoose")
 
 const pictureRoutes = require("./routes/pictures")
 
-mongoose.connect(process.env.MONGO_ATLAS_URI, error => {
-	if (error) {
-		console.log("Error in database\n", error)
-	}
-})
-
 const app = express()
 
 app.use(bodyParser.json())
