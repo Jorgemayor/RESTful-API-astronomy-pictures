@@ -11,6 +11,6 @@ router.get("/", pictureController.getAllPictures)
 
 router.patch("/:pictureId", pictureController.updatePicture)
 
-router.delete("/:orderId", pictureController.deletePicture)
+router.delete("/:pictureId", pictureController.deletePicture)
 
 module.exports = router

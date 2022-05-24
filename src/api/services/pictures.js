@@ -13,26 +13,21 @@ const getPicture = async pictureId => {
 }
 
 const getAllPictures = async (filters, params) => {
-	return await Picture.paginate(filters, params)
-		.catch(error => {
-			throw error
-		})
+	return await Picture.paginate(filters, params).catch(error => {
+		throw error
+	})
 }
 
-const updatePicture = (pictureId, body) => {
-	try {
-		console.log("Pictured updated: ", pictureId)
-	} catch (error) {
+const updatePicture = async (pictureId, body) => {
+	return await Picture.findByIdAndUpdate(pictureId, body, {}).catch(error => {
 		throw error
-	}
+	})
 }
 
-const deletePicture = pictureId => {
-	try {
-		console.log("Pictured deleted: ", pictureId)
-	} catch (error) {
+const deletePicture = async pictureId => {
+	return await Picture.findByIdAndRemove(pictureId).catch(error => {
 		throw error
-	}
+	})
 }
 
 module.exports = {
