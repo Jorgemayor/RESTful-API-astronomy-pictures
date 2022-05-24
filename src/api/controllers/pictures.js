@@ -26,7 +26,7 @@ const createPicture = async (req, res) => {
 	} catch (error) {
 		res.status(error?.status || 500).json({
 			status: error?.status || 500,
-			error: error
+			error: error,
 		})
 	}
 }
@@ -62,15 +62,27 @@ const getPicture = async (req, res) => {
 	} catch (error) {
 		res.status(error?.status || 500).json({
 			status: error?.status || 500,
-			error: error
+			error: error,
 		})
 	}
 }
 
-const getAllPictures = (req, res, next) => {
-	res.status(200).json({
-		message: "Handling GET request to /pictures",
-	})
+const getAllPictures = async (req, res, next) => {
+	let {limit, page, ...filters } = req.query
+	limit = parseInt(limit, 10) || 10
+	page = parseInt(page, 10) || 1
+	filters.title = {$regex: new RegExp(filters.title, 'i')}
+	filters.explanation = {$regex: new RegExp(filters.explanation, 'i')}
+	
+	try {
+		const result = await pictureServices.getAllPictures(filters, {limit, page})
+		res.status(200).json(result)
+	} catch (error) {
+		res.status(error?.status || 500).json({
+			status: error?.status || 500,
+			error: error,
+		})
+	}
 }
 
 const updatePicture = (req, res, next) => {

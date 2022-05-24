@@ -12,13 +12,11 @@ const getPicture = async pictureId => {
 	})
 }
 
-const getAllPictures = () => {
-	Picture.find().exec().then(docs => {
-		console.log(docs)
-		return docs
-	}).catch(error => {
-		throw error
-	})
+const getAllPictures = async (filters, params) => {
+	return await Picture.paginate(filters, params)
+		.catch(error => {
+			throw error
+		})
 }
 
 const updatePicture = (pictureId, body) => {
