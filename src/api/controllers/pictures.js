@@ -1,35 +1,70 @@
 const pictureServices = require("../services/pictures")
 
-const createPicture = async (req, res, next) => {
+const createPicture = async (req, res) => {
 	const { body } = req
-	
-	if(!body.explanation || !body.hdurl || !body.title || !body.url) {
+
+	if (!body.explanation || !body.hdurl || !body.title || !body.url) {
 		res.status(400).json({
 			status: "400 Bad request",
-			message: "At least one of the parameters was not provided or is empty."
+			message: "At least one of the parameters was not provided or is empty.",
 		})
 		return
 	}
-	
+
 	try {
-		const response = await pictureServices.createPicture(body)
+		const result = await pictureServices.createPicture(body)
 		res.status(201).json({
-			status: "201 Created"
+			status: "201 Created",
+			createdPicture: {
+				id: result._id,
+				title: result.title,
+				explanation: result.explanation,
+				url: result.url,
+				hdurl: result.hdurl,
+			},
 		})
 	} catch (error) {
 		res.status(error?.status || 500).json({
 			status: error?.status || 500,
-			error: error?.message || "Internal server error"
+			error: error
 		})
 	}
 }
 
-const getPicture = (req, res, next) => {
-	const id = req.params.pictureId
-	res.status(200).json({
-		message: "Handling GET request to /pictures",
-		id: id,
-	})
+const getPicture = async (req, res) => {
+	const pictureId = req.params.pictureId
+
+	if (!pictureId) {
+		res.status(400).json({
+			status: "400 Bad request",
+			message: "The picture ID wad not provided.",
+		})
+		return
+	}
+
+	try {
+		const result = await pictureServices.getPicture(pictureId)
+		if (!result) {
+			res.status(404).json({
+				status: 404,
+				error: "No valid entry found for provided ID",
+			})
+			return
+		}
+
+		res.status(200).json({
+			id: result._id,
+			title: result.title,
+			explanation: result.explanation,
+			url: result.url,
+			hdurl: result.hdurl,
+		})
+	} catch (error) {
+		res.status(error?.status || 500).json({
+			status: error?.status || 500,
+			error: error
+		})
+	}
 }
 
 const getAllPictures = (req, res, next) => {
