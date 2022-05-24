@@ -13,11 +13,6 @@ mongoose.connect(process.env.MONGO_ATLAS_URI, error => {
 const app = express()
 
 app.use(bodyParser.json())
-app.use(
-	bodyParser.urlencoded({
-		extended: false,
-	})
-)
 
 app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*")
@@ -37,7 +32,7 @@ app.use("/pictures", pictureRoutes)
 
 // Handling errors
 app.use((req, res, next) => {
-	const error = new Error("Not found")
+	const error = new Error("Route not found")
 	error.status = 404
 	next(error)
 })
@@ -46,7 +41,8 @@ app.use((error, req, res, next) => {
 	res.status(error.status || 500)
 	res.json({
 		error: {
-			message: error.message,
+			status: error.status,
+			message: error.message
 		},
 	})
 })
