@@ -1,33 +1,23 @@
-const Picture = require("../models/Picture")
+const Picture = require("../database/database")
 
 const createPicture = async body => {
-	return await new Picture(body).save().catch(error => {
-		throw error
-	})
+	return await Picture.createPicture(body)
 }
 
 const getPicture = async pictureId => {
-	return await Picture.findById(pictureId).catch(error => {
-		throw error
-	})
+	return await Picture.getPicture(pictureId)
 }
 
 const getAllPictures = async (filters, params) => {
-	return await Picture.paginate(filters, params).catch(error => {
-		throw error
-	})
+	return await Picture.getAllPictures(filters, params)
 }
 
 const updatePicture = async (pictureId, body) => {
-	return await Picture.findByIdAndUpdate(pictureId, body, {}).catch(error => {
-		throw error
-	})
+	return await Picture.updatePicture(pictureId, body)
 }
 
 const deletePicture = async pictureId => {
-	return await Picture.findByIdAndRemove(pictureId).catch(error => {
-		throw error
-	})
+	return await Picture.deletePicture(pictureId)
 }
 
 module.exports = {
