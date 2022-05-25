@@ -17,10 +17,9 @@ db.on("error", console.error.bind(console, "connection error: "))
 db.once("open", async () => {
 	if ((await Picture.countDocuments().exec()) > 0) {
 		console.log("Database already populated")
-		await deleteAllPictures()
 		return
 	}
-	
+
 	console.log("Populating database...")
 	const nasaPictures = await nasaAPI.getNasaPictures()
 
