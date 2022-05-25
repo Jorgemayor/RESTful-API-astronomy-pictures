@@ -4,10 +4,11 @@ RESTful API for the input of Astronomy pictures provided by [Astronomy Picture o
 
 ## Table of contents
 1. [Environment](#environment)
-2. [Documentation](#documentation)
+2. [Usage](#usage)
+3. [Documentation](#documentation)
    1. [HTTP methods](#http-methods)
    2. [Endpoints](#endpoints)
-3. [Author](#author)
+4. [Author](#author)
 
 ## Environment <a name="environment"></a>
 
@@ -23,6 +24,10 @@ cd RESTful-API-astronomy-pictures
 ```bash
 npm install
 ```
+
+## Usage <a name="usage"></a>
+
+Run `npm start` or `nodemon` in the CLI.
 
 ## Documentation <a name="documentation"></a>
 
