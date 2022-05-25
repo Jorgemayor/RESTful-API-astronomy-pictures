@@ -2,6 +2,12 @@ const axios = require("axios")
 
 const numberOfPictures = 100
 
+/* getNasaPictures
+	
+	Returns the indicated number of pictures from the APOD API.
+	It may be fewer pictures than the specified if some of them
+	don't fulfill all the requirements.
+ */
 const getNasaPictures = async () => {
 	let pictures = []
 	try {
