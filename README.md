@@ -50,10 +50,13 @@ These params are used to paginate and filter the result.
 
 **Returned fields**
 
+- `id` Id if of the image.
 - `title` The title of the image.
 - `url` The URL of the APOD image or video of the day.
 - `hdurl` The URL for any high-resolution image.
 - `explanation` The supplied text explanation of the image.
+
+All these fields (except the id) are needed at the moment of the creation of an image.
 
 **Examples**
 
