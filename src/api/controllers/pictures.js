@@ -73,7 +73,7 @@ const getAllPictures = async (req, res) => {
 	page = parseInt(page, 10) || 1
 	filters.title = { $regex: new RegExp(filters.title, "i") }
 	filters.explanation = { $regex: new RegExp(filters.explanation, "i") }
-
+	
 	try {
 		const result = await pictureServices.getAllPictures(filters, {
 			limit,
@@ -128,7 +128,7 @@ const updatePicture = async (req, res) => {
 
 const deletePicture = async (req, res) => {
 	const pictureId = req.params.pictureId
-	console.log(pictureId)
+	
 	if (!pictureId) {
 		res.status(400).json({
 			status: "400 Bad request",
@@ -146,7 +146,6 @@ const deletePicture = async (req, res) => {
 			})
 			return
 		}
-		console.log(result)
 
 		res.status(200).json({
 			status: "200 Picture deleted",

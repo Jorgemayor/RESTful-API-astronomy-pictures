@@ -10,6 +10,7 @@ const getNasaPictures = async () => {
 		)
 		for (const picture of data) {
 			const { explanation, hdurl, title, url } = picture
+			if(!explanation || !hdurl || !title || !url) continue
 			pictures.push({
 				explanation: explanation,
 				hdurl: hdurl,

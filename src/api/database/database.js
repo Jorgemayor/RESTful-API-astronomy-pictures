@@ -51,7 +51,7 @@ const getAllPictures = async (filters, params) => {
 }
 
 const updatePicture = async (pictureId, body) => {
-	return await Picture.findByIdAndUpdate(pictureId, body, {}).catch(error => {
+	return await Picture.findByIdAndUpdate(pictureId, body).catch(error => {
 		throw error
 	})
 }
