@@ -5,8 +5,8 @@ RESTful API for the input of Astronomy pictures provided by [Astronomy Picture o
 ## Table of contents
 1. [Environment](#environment)
 2. [Documentation](#documentation)
-   1. [Endpoint](#endpoint)
-   2. [HTTP methods](#http-methods)
+   1. [HTTP methods](#http-methods)
+   2. [Endpoints](#endpoints)
 3. [Author](#author)
 
 ## Environment <a name="environment"></a>
@@ -26,16 +26,20 @@ npm install
 
 ## Documentation <a name="documentation"></a>
 
-### Endpoint: `/pictures` <a name="endpoint"></a>
-
-There is only one endpoint in this service.
-
 ### HTTP methods <a name="http-methods"></a>
 
 - GET - Takes several optional URL search params or the id of a picture.
 - POST - Takes a body in the JSON format to create a picture.
 - PATCH - Takes a body in the JSON format to update a picture and its id.
 - DELETE - Takes a picture id to delete it.
+
+### Endpoints <a name="endpoints"></a>
+
+- GET - `/pictures`
+- GET - `/pictures/{pictureId}`
+- POST - `/pictures`
+- PATCH - `/pictures/{pictureId}`
+- DELETE - `/pictures/{pictureId}`
 
 #### URL Search Params for GET method
 
