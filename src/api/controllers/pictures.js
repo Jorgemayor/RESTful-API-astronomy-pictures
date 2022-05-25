@@ -1,5 +1,14 @@
 const pictureServices = require("../services/pictures")
 
+/* createPicture
+	Async function to create a picture.
+	
+	Gets the fields from the request body.
+	
+	Sends a JSON with the fields of the created picture in case
+	of success. Otherwise, the JSON will have the specifications of
+	the error.
+ */
 const createPicture = async (req, res) => {
 	const { body } = req
 
@@ -31,6 +40,14 @@ const createPicture = async (req, res) => {
 	}
 }
 
+/* getPicture
+	Async function to get a picture.
+	
+	Gets the picture id from the request parameters.
+	
+	Sends a JSON with the fields of the picture in case of success.
+	Otherwise, the JSON will have the specifications of	the error.
+ */
 const getPicture = async (req, res) => {
 	const pictureId = req.params.pictureId
 
@@ -67,6 +84,15 @@ const getPicture = async (req, res) => {
 	}
 }
 
+/* getAllPictures
+	Async function to get all pictures.
+	
+	Gets a query from the request to apply filters or pagination.
+	
+	Sends a JSON with the fields of all the filtered pictures in case
+	of success. Otherwise, the JSON will have the specifications of
+	the error.
+ */
 const getAllPictures = async (req, res) => {
 	let { limit, page, ...filters } = req.query
 	limit = parseInt(limit, 10) || 10
@@ -88,6 +114,15 @@ const getAllPictures = async (req, res) => {
 	}
 }
 
+/* updatePicture
+	Async function to update a picture.
+	
+	Gets the picture id from the request parameters.
+	
+	Sends a JSON with a	success message if the update was
+	performed. Otherwise, the JSON will have the specifications
+	of the error.
+ */
 const updatePicture = async (req, res) => {
 	const pictureId = req.params.pictureId
 	const { body } = req
@@ -126,6 +161,15 @@ const updatePicture = async (req, res) => {
 	}
 }
 
+/* deletePicture
+	Async function to delete a picture.
+	
+	Gets the picture id from the request parameters.
+	
+	Sends a JSON with a	success message if the delete was
+	performed. Otherwise, the JSON will have the specifications
+	of the error.
+ */
 const deletePicture = async (req, res) => {
 	const pictureId = req.params.pictureId
 	

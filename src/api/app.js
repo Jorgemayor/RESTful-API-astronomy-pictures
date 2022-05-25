@@ -6,6 +6,7 @@ const pictureRoutes = require("./routes/pictures")
 
 const app = express()
 
+// Using cors to allow http methods from different domains
 app.use(cors())
 
 app.use(bodyParser.json())
